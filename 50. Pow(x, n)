@@ -1,0 +1,6 @@
+class Solution {
+    public double myPow(double x, int n) {
+        Double result = Math.pow(x, n);
+        return result;
+    }
+}
