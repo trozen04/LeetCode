@@ -1,0 +1,44 @@
+class Solution {
+    public void setZeroes(int[][] matrix) {
+        int m = matrix.length;
+        int n = matrix[0].length;
+        int[][] arr = new int[m][n];
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(matrix[i][j] == 0){
+                    int ki = i; int kj = 0;
+                    while(kj < n){
+                        if(matrix[ki][kj] == 0 && kj != j){
+                            kj++;
+                            continue;
+                        } else if(matrix[ki][kj] == 'a'){
+                            kj++;
+                            continue;
+                        }
+                        matrix[ki][kj] = 'a';
+                        kj++;
+                    }
+                    ki = 0; kj = j;
+                    while(ki < m){
+                        if(matrix[ki][kj] == 0 && ki != i){
+                            ki++;
+                            continue;
+                        } else if(matrix[ki][kj] == 'a'){
+                            ki++;
+                            continue;
+                        }
+                        matrix[ki][kj] = 'a';
+                        ki++;
+                    }
+                }
+            }
+        }
+        for(int i = 0; i < m; i++){
+            for(int j = 0; j < n; j++){
+                if(matrix[i][j] == 'a'){
+                    matrix[i][j] = 0;
+                }
+            }
+        }
+    }
+}
