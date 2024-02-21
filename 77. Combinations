@@ -1,0 +1,20 @@
+class Solution {
+    public List<List<Integer>> combine(int n, int k) {
+        List<List<Integer>> subset = new ArrayList<>();
+        combinations(1, subset,new ArrayList<>(), n, k);
+        return subset;
+    }
+    void combinations(int start, List<List<Integer>> subset, List<Integer> current, int n, int k){
+        
+
+        if(current.size() == k){
+            subset.add(new ArrayList(current));
+            return;
+        }
+        for(int i = start; i <= n; i++){
+            current.add(i);
+            combinations(i+1, subset, current, n, k);
+            current.remove(current.size() - 1);
+        }
+    }
+}
