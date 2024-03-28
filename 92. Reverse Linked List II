@@ -1,0 +1,26 @@
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode res = new ListNode(Integer.MIN_VALUE);
+        ListNode dummy = res;
+        for(int i = 1; i < left; i++){
+            dummy.next = new ListNode(head.val);
+            head = head.next;
+            dummy = dummy.next;
+        }
+        Stack<Integer> stack = new Stack<>();
+        for(int i = left; i <= right; i++){
+            stack.push(head.val);
+            head = head.next;
+        }
+        while(!stack.isEmpty()){
+            dummy.next = new ListNode(stack.pop());
+            dummy = dummy.next;
+        }
+        while(head != null){
+            dummy.next = new ListNode(head.val);;
+            head = head.next;
+            dummy = dummy.next;
+        }
+        return res.next;
+    }
+}
