@@ -1,0 +1,19 @@
+class Solution {
+    public int sumOfLeftLeaves(TreeNode root) {
+        return helper(root, null);
+    }
+    public int helper(TreeNode tree, TreeNode parent){
+        if(tree == null){
+            return 0;
+        }
+        if(tree.left == null && tree.right == null){
+            if(parent != null && parent.left == tree){
+                return tree.val;
+            }
+        }
+
+        int left = helper(tree.left, tree);
+        int right = helper(tree.right, tree);
+        return left + right;
+    }
+}
