@@ -1,0 +1,28 @@
+class Solution {
+    public String[] findRelativeRanks(int[] score) {
+        String[] trozen = new String[score.length];
+
+        for(int i = 0; i < )
+
+        for(int i = 0; i < score.length; i++){
+            int large = 0;
+            for(int j = 0; j < score.length; j++){
+                if(i == j) continue;
+                if(score[i] < score[j]){
+                    large++; 
+                }
+            }
+            if(large == 0){
+                trozen[i] = "Gold Medal";
+            }else if(large == 1){
+                trozen[i] = "Silver Medal";
+            } else if(large == 2){
+                trozen[i] = "Bronze Medal";
+            } else{
+                int num = large + 1;
+                trozen[i] = "" + num;
+            }
+        }
+        return trozen;
+    }
+}
