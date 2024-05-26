@@ -1,0 +1,22 @@
+class Solution {
+    public String compressedString(String word) {
+        if(word.length() == 0) return "";
+        String comp = "";
+        int count = 1;
+        for(int i = 0; i < word.length(); i++){
+            if(i+1 < word.length() && word.charAt(i) == word.charAt(i+1)){
+                if(count == 9){
+                    comp += count;
+                    comp += word.charAt(i);
+                    count = 0;
+                }
+                count++;
+            } else{
+                comp += count;
+                comp += word.charAt(i);
+                count = 1;
+            }
+        }
+        return comp;
+    }
+}
